@@ -7,10 +7,10 @@ import Visualizer from './components/visualizer';
 const ROOT = document.getElementById('app');
 
 const APP = (
-  <div>
+  <section>
     <h1>Visualizer</h1>
     <Visualizer/>
-  </div>
+  </section>
 );
 
 ReactDom.render(APP, ROOT);

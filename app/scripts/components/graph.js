@@ -18,7 +18,6 @@ class Graph extends React.Component {
              style={{height: `${item}px`}}></div>
       );
     });
-    console.log(boxElements);
 
     return boxElements;
   }

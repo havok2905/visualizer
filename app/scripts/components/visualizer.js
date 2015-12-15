@@ -40,12 +40,15 @@ class Visualizer extends React.Component {
   render() {
     return (
       <div>
-        <h2>Frequency</h2>
         <audio id='master-of-puppets'
                src='./app/assets/master_of_puppets.mp3'></audio>
         <Graph data={ this.state.data }/>
-        <button onClick={ this.play.bind(this) }>Play</button>
-        <button onClick={ this.pause.bind(this) }>Pause</button>
+        <div className='actions -center'>
+          <button className='button'
+                  onClick={ this.play.bind(this) }>Play</button>
+          <button className='button'
+                  onClick={ this.pause.bind(this) }>Pause</button>
+        </div>
       </div>
     );
   }

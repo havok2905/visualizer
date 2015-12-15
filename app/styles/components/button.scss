@@ -1,0 +1,23 @@
+.actions {
+  display: block;
+
+  &.-center {
+    text-align: center;
+  }
+}
+
+.button {
+  margin: 5px;
+  padding: 20px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: $color-primary;
+  color: $color-white;
+  font-weight: 900;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: darken($color-primary, 20);
+  }
+}
