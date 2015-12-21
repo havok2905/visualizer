@@ -6,11 +6,7 @@
 - JS Audio API
 - SASS
 
-## Local Server
-
-`python -m SimpleHTTPServer 8000`
-
-## Build/Watch
+## Build/Watch/Serve
 
 `gulp`
 
