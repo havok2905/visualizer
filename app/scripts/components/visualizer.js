@@ -1,8 +1,8 @@
 'use strict';
 
 import React from 'react';
-import AUDIO_SOURCE from '../constants/audio_source';
 import AudioStream from '../services/audio_stream';
+import AlbumArt from './album_art';
 import Graph from './graph';
 
 class Visualizer extends React.Component {
@@ -42,14 +42,15 @@ class Visualizer extends React.Component {
     return (
       <div>
         <audio id='audio-source'
-               src={ AUDIO_SOURCE }></audio>
-        <Graph data={ this.state.data }/>
+               src={ this.props.song.source }></audio>
+        <AlbumArt song={ this.props.song }/>
         <div className='actions -center'>
           <button className='button'
                   onClick={ this.play.bind(this) }>Play</button>
           <button className='button'
                   onClick={ this.pause.bind(this) }>Pause</button>
         </div>
+        <Graph data={ this.state.data }/>
       </div>
     );
   }
