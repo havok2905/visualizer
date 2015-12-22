@@ -13,7 +13,7 @@ class Visualizer extends React.Component {
   }
 
   componentDidMount() {
-    this.audio = document.getElementById('master-of-puppets');
+    this.audio = document.getElementById('audio-source');
     this.stream = new AudioStream(this.audio);
     this.stream.listenToFrequencyUpdated(this.onChange.bind(this));
   }
@@ -41,7 +41,7 @@ class Visualizer extends React.Component {
   render() {
     return (
       <div>
-        <audio id='master-of-puppets'
+        <audio id='audio-source'
                src={ AUDIO_SOURCE }></audio>
         <Graph data={ this.state.data }/>
         <div className='actions -center'>
