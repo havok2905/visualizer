@@ -7,10 +7,6 @@ import SONG from './constants/song';
 
 const ROOT = document.getElementById('app');
 
-const APP = (
-  <section>
-    <Visualizer song={ SONG }/>
-  </section>
-);
+const APP = ( <Visualizer song={ SONG }/> );
 
 ReactDom.render(APP, ROOT);

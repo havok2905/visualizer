@@ -18,6 +18,6 @@
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: darken($color-primary, 20);
+    background-color: lighten($color-primary, 10);
   }
 }

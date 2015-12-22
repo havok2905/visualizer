@@ -1,13 +1,31 @@
 body, html {
   font-family: 'Montserrat', sans-serif;
-  text-align: center;
-  background-color: $color-black;
-  color: $color-white;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
+  text-align: center;
   font-size: 48px;
   text-transform: uppercase;
+}
+
+h2 {
+  font-size: 36px;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 20px;
+}
+
+h1, h2, h3, p {
+  line-height: 1.5;
 }
 
 ul {
@@ -20,6 +38,8 @@ ul {
 a {
   color: $color-primary;
   transition: color 0.3s;
+  text-decoration: none;
+
   &:hover {
     color: lighten($color-primary, 10);
   }
