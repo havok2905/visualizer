@@ -1,11 +1,26 @@
 body, html {
-  font-family: 'Metal Mania', cursive;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
   background-color: $color-black;
+  color: $color-white;
 }
 
 h1 {
   font-size: 48px;
-  text-align: center;
-  color: $color-white;
   text-transform: uppercase;
+}
+
+ul {
+  li {
+    margin-left: -40px;
+    list-style-type: none;
+  }
+}
+
+a {
+  color: $color-primary;
+  transition: color 0.3s;
+  &:hover {
+    color: lighten($color-primary, 10);
+  }
 }
