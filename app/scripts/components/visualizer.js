@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import AUDIO_SOURCE from '../constants/audio_source';
 import AudioStream from '../services/audio_stream';
 import Graph from './graph';
 
@@ -41,7 +42,7 @@ class Visualizer extends React.Component {
     return (
       <div>
         <audio id='master-of-puppets'
-               src='./app/assets/master_of_puppets.mp3'></audio>
+               src={ AUDIO_SOURCE }></audio>
         <Graph data={ this.state.data }/>
         <div className='actions -center'>
           <button className='button'
