@@ -1,0 +1,27 @@
+section {
+  text-align: center;
+  padding: 50px 20px;
+  border-radius: border-box;
+
+  &.-demo {
+    background-color: $color-black;
+
+    * {
+      color: $color-white;
+    }
+  }
+
+  &.-info {
+    background-color: $color-white;
+
+    h1, h2, h3 {
+      color: $color-black;
+    }
+
+    p {
+      color: $color-gray;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+}
