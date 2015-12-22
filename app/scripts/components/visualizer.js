@@ -28,14 +28,18 @@ class Visualizer extends React.Component {
   }
 
   play() {
-    this.running = true;
-    this.audio.play();
-    this.loop();
+    if(!this.running) {
+      this.running = true;
+      this.audio.play();
+      this.loop();
+    }
   }
 
   pause() {
-    this.running = false;
-    this.audio.pause();
+    if(this.running) {
+      this.running = false;
+      this.audio.pause();  
+    }
   }
 
   render() {
