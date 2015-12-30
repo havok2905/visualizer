@@ -2,6 +2,7 @@
 
 import React from 'react';
 import AudioStream from '../services/audio_stream';
+import AudioContext from '../constants/audio_context';
 import AlbumArt from './album_art';
 import Graph from './graph';
 
@@ -16,7 +17,7 @@ class Visualizer extends React.Component {
 
   componentDidMount() {
     this.audio = document.getElementById('audio-source');
-    this.stream = new AudioStream(this.audio);
+    this.stream = new AudioStream(this.audio, new AudioContext());
     this.stream.listenToFrequencyUpdated(this.onChange.bind(this));
   }
 

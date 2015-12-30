@@ -3,11 +3,8 @@
 import EventEmitter from 'events';
 
 class AudioStream extends EventEmitter {
-  constructor(audio) {
+  constructor(audio, context) {
     super();
-
-    let context = new (window.AudioContext || window.webkitAudioContext)();
-
     this.context   = context;
     this.source    = context.createMediaElementSource(audio);
     this.analyzer  = context.createAnalyser();
