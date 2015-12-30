@@ -1,23 +1,25 @@
-.actions {
-  display: block;
-
-  &.-center {
-    text-align: center;
-  }
-}
-
-.button {
+button.button {
   margin: 5px;
-  padding: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
   outline: none;
   border: none;
   cursor: pointer;
-  background-color: $color-primary;
-  color: $color-white;
+  background-color: $color-white;
+  color: $color-primary;
   font-weight: 900;
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: darken($color-primary, 20);
+    background-color: lighten($color-white, 10);
+  }
+
+  &.-pause {
+
+  }
+
+  &.-play {
+
   }
 }

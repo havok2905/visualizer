@@ -3,18 +3,37 @@
 import EventEmitter from 'events';
 
 class AudioStream extends EventEmitter {
-  constructor(audio) {
+  constructor(options) {
     super();
 
-    let context = new (window.AudioContext || window.webkitAudioContext)();
+    this.playing   = false;
+    this.audio     = options.audio;
+    this.context   = options.context;
+    this.frequency = options.frequency;
 
-    this.context   = context;
-    this.source    = context.createMediaElementSource(audio);
-    this.analyzer  = context.createAnalyser();
-    this.frequency = new Uint8Array(200);
+    this.source    = options.context.createMediaElementSource(options.audio);
+    this.analyzer  = options.context.createAnalyser();
 
+    this.connect();
+  }
+
+  connect() {
     this.source.connect(this.analyzer);
     this.source.connect(this.context.destination);
+  }
+
+  toggle() {
+    this.playing = !this.playing;
+  }
+
+  play() {
+    this.toggle();
+    this.audio.play();
+  }
+
+  pause() {
+    this.toggle();
+    this.audio.pause();
   }
 
   listenToFrequencyUpdated(callback) {

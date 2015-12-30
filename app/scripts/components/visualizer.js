@@ -1,54 +1,46 @@
 'use strict';
 
 import React from 'react';
+import AUDIO_CONTEXT from '../constants/audio_context';
+import GRAPH_CONFIG from  '../constants/graph_config';
 import AudioStream from '../services/audio_stream';
+import VisualizerActions from './visualizer_actions';
 import Graph from './graph';
+import LineGraph from './line_graph';
 
 class Visualizer extends React.Component {
   constructor(props) {
     super(props);
     this.state = { data: [] };
-    this.running = false;
   }
 
-  componentDidMount() {
-    this.audio = document.getElementById('master-of-puppets');
-    this.stream = new AudioStream(this.audio);
+  componentWillMount() {
+    this.stream = new AudioStream({
+      audio:     new Audio('/app/assets/master_of_puppets.mp3'),
+      context:   new AUDIO_CONTEXT(),
+      frequency: new Uint8Array(200)
+    });
+
     this.stream.listenToFrequencyUpdated(this.onChange.bind(this));
   }
 
   onChange() {
-    this.setState({ data: this.stream.frequency });
-  }
-
-  loop() {
-    this.stream.updateFrequency();
-    if(this.running) requestAnimationFrame(this.loop.bind(this));
-  }
-
-  play() {
-    this.running = true;
-    this.audio.play();
-    this.loop();
-  }
-
-  pause() {
-    this.running = false;
-    this.audio.pause();
+    this.setState({data: this.stream.frequency});
   }
 
   render() {
     return (
-      <div>
-        <audio id='master-of-puppets'
-               src='./app/assets/master_of_puppets.mp3'></audio>
+      <div className='visualizer'>
         <Graph data={ this.state.data }/>
-        <div className='actions -center'>
-          <button className='button'
-                  onClick={ this.play.bind(this) }>Play</button>
-          <button className='button'
-                  onClick={ this.pause.bind(this) }>Pause</button>
-        </div>
+        <LineGraph line={ GRAPH_CONFIG.line }
+                   xscale={ GRAPH_CONFIG.xscale }
+                   yscale={ GRAPH_CONFIG.yscale }
+                   width={ GRAPH_CONFIG.width }
+                   height={ GRAPH_CONFIG.height }
+                   data={ this.state.data }
+        />
+        <VisualizerActions song={ this.props.song }
+                          stream={ this.stream }/>
       </div>
     );
   }
