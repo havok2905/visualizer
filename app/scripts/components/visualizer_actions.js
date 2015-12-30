@@ -29,8 +29,6 @@ class VisualizerActions extends React.Component {
   render() {
     return (
       <div className='visualizer-actions'>
-        <audio id='audio-source'
-               src={ this.props.song.source }></audio>
         <div className='album'>
           <AlbumArt song={ this.props.song }/>
         </div>
