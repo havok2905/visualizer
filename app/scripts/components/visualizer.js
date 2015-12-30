@@ -16,7 +16,7 @@ class Visualizer extends React.Component {
 
   componentWillMount() {
     this.stream = new AudioStream({
-      audio:     new Audio('/app/assets/master_of_puppets.mp3'),
+      audio:     new Audio('/visualizer/app/assets/master_of_puppets.mp3'),
       context:   new AUDIO_CONTEXT(),
       frequency: new Uint8Array(200)
     });
