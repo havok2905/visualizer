@@ -3,21 +3,22 @@
 import React from 'react';
 import AudioStream from '../services/audio_stream';
 import AudioContext from '../constants/audio_context';
-import AlbumArt from './album_art';
+import VisualizerActions from './visualizer_actions';
 import Graph from './graph';
 
 class Visualizer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      data: [],
-      running: false
-    };
+    this.state = { data: [] };
   }
 
-  componentDidMount() {
-    this.audio = document.getElementById('audio-source');
-    this.stream = new AudioStream(this.audio, new AudioContext());
+  componentWillMount() {
+    this.stream = new AudioStream({
+      audio:     new Audio('/app/assets/master_of_puppets.mp3'),
+      context:   new AudioContext(),
+      frequency: new Uint8Array(200)
+    });
+
     this.stream.listenToFrequencyUpdated(this.onChange.bind(this));
   }
 
@@ -25,45 +26,12 @@ class Visualizer extends React.Component {
     this.setState({data: this.stream.frequency});
   }
 
-  loop() {
-    this.stream.updateFrequency();
-    if(this.state.running) requestAnimationFrame(this.loop.bind(this));
-  }
-
-  play() {
-    if(!this.state.running) {
-      this.state.running = true;
-      this.audio.play();
-      this.loop();
-    }
-  }
-
-  pause() {
-    if(this.state.running) {
-      this.state.running = false;
-      this.audio.pause();
-    }
-  }
-
   render() {
     return (
       <div className='visualizer'>
-        <audio id='audio-source'
-               src={ this.props.song.source }></audio>
-
         <Graph data={ this.state.data }/>
-
-        <div className='visualizer-footer'>
-          <div className='album'>
-            <AlbumArt song={ this.props.song }/>
-          </div>
-          <div className='actions'>
-            <button className='button -pause'
-                    onClick={ this.pause.bind(this) }>Pause</button>
-            <button className='button -play'
-                    onClick={ this.play.bind(this) }>Play</button>
-          </div>
-        </div>
+        <VisualizerActions song={ this.props.song }
+                          stream={ this.stream }/>
       </div>
     );
   }
