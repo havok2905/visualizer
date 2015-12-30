@@ -1,0 +1,51 @@
+/*
+ * Generate a left to right gradient of two colors in
+ * all browsers.
+ *
+ * Most code here was borrowed from the following CSS Tricks
+ * article. Pillaged mostly for the appropriate browser prefixes.
+ * https://css-tricks.com/css3-gradients/
+ */
+
+@mixin horizontal-gradient($color-one, $color-two) {
+
+  // Old browsers, IE9 and below
+  background-color: $color-one;
+
+  // Safari 4, Chrome 1-9, iOS 3.2-4.3, Android 2.1-3.0
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from($color-one),
+    to($color-two)
+  );
+
+  // Safari 5.1, iOS 5.0-6.1, Chrome 10-25, Android 4.0-4.3
+  background-image: -webkit-linear-gradient(
+    left,
+    $color-one 50%,
+    $color-two 50%
+  );
+
+  // Firefox 3.6 - 15
+  background-image: -moz-linear-gradient(
+    left,
+    $color-one,
+    $color-two
+  );
+
+  // Opera 11.1 - 12
+  background-image: -o-linear-gradient(
+    left,
+    $color-one,
+    $color-two
+  );
+
+  // Native implementation
+  background-image: linear-gradient(
+    to right,
+    $color-one,
+    $color-two
+  );
+}

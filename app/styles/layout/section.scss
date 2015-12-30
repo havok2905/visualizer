@@ -1,27 +1,27 @@
 section {
-  text-align: center;
   padding: 50px 20px;
-  border-radius: border-box;
+  box-sizing: border-box;
+}
 
-  &.-demo {
-    background-color: $color-black;
+&.-demo {
+  @include horizontal-gradient($color-secondary, $color-primary);
 
-    * {
-      color: $color-white;
-    }
+  * {
+    color: $color-white;
+  }
+}
+
+&.-info {
+  text-align: center;
+  background-color: $color-white;
+
+  h1, h2, h3 {
+    color: $color-black;
   }
 
-  &.-info {
-    background-color: $color-white;
-
-    h1, h2, h3 {
-      color: $color-black;
-    }
-
-    p {
-      color: $color-gray;
-      max-width: 600px;
-      margin: 0 auto;
-    }
+  p {
+    color: $color-gray;
+    max-width: 600px;
+    margin: 0 auto;
   }
 }

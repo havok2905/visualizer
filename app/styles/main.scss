@@ -1,9 +1,13 @@
 @import "utils/colors";
+@import "utils/mixins/horizontal-gradient";
 
 @import "base/typography";
 
 @import "components/bar";
 @import "components/graph";
 @import "components/button";
+@import "components/album";
+@import "components/visualizer";
+@import "components/visualizer_footer";
 
 @import "layout/section";

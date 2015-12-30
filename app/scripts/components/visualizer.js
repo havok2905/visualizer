@@ -8,8 +8,10 @@ import Graph from './graph';
 class Visualizer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { data: [] };
-    this.running = false;
+    this.state = {
+      data: [],
+      running: false
+    };
   }
 
   componentDidMount() {
@@ -19,42 +21,48 @@ class Visualizer extends React.Component {
   }
 
   onChange() {
-    this.setState({ data: this.stream.frequency });
+    this.setState({data: this.stream.frequency});
   }
 
   loop() {
     this.stream.updateFrequency();
-    if(this.running) requestAnimationFrame(this.loop.bind(this));
+    if(this.state.running) requestAnimationFrame(this.loop.bind(this));
   }
 
   play() {
-    if(!this.running) {
-      this.running = true;
+    if(!this.state.running) {
+      this.state.running = true;
       this.audio.play();
       this.loop();
     }
   }
 
   pause() {
-    if(this.running) {
-      this.running = false;
-      this.audio.pause();  
+    if(this.state.running) {
+      this.state.running = false;
+      this.audio.pause();
     }
   }
 
   render() {
     return (
-      <div>
+      <div className='visualizer'>
         <audio id='audio-source'
                src={ this.props.song.source }></audio>
-        <AlbumArt song={ this.props.song }/>
-        <div className='actions -center'>
-          <button className='button'
-                  onClick={ this.play.bind(this) }>Play</button>
-          <button className='button'
-                  onClick={ this.pause.bind(this) }>Pause</button>
-        </div>
+
         <Graph data={ this.state.data }/>
+
+        <div className='visualizer-footer'>
+          <div className='album'>
+            <AlbumArt song={ this.props.song }/>
+          </div>
+          <div className='actions'>
+            <button className='button -pause'
+                    onClick={ this.pause.bind(this) }>Pause</button>
+            <button className='button -play'
+                    onClick={ this.play.bind(this) }>Play</button>
+          </div>
+        </div>
       </div>
     );
   }

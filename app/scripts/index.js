@@ -7,6 +7,11 @@ import SONG from './constants/song';
 
 const ROOT = document.getElementById('app');
 
-const APP = ( <Visualizer song={ SONG }/> );
+const APP = (
+  <div>
+    <h1>Aduio Visualizer</h1>
+    <Visualizer song={ SONG }/>
+  </div>
+);
 
 ReactDom.render(APP, ROOT);

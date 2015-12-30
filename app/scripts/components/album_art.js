@@ -9,11 +9,16 @@ class AlbumArt extends React.Component {
 
   render() {
     return (
-      <div className='album-art'>
+      <div>
         <img src={ this.props.song.image }
              alt={ this.props.song.album }
              title={ this.props.song.album }/>
-        <p>{ this.props.song.name }, { this.props.song.band }</p>
+        <div>
+          <p>{ this.props.song.name  }, { this.props.song.album }</p>
+          <p>{ this.props.song.band  }</p>
+          <p>{ this.props.song.year  }</p>
+          <p>{ this.props.song.genre }</p>
+        </div>
       </div>
     );
   }

@@ -1,0 +1,12 @@
+.visualizer-footer {
+  margin-top: 20px;
+
+  .album   { float: left;  }
+  .actions { float: right; }
+
+  &::after {
+    content: '';
+    clear: both;
+    display: block;
+  }
+}
