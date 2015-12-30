@@ -5,7 +5,6 @@ import AUDIO_CONTEXT from '../constants/audio_context';
 import GRAPH_CONFIG from  '../constants/graph_config';
 import AudioStream from '../services/audio_stream';
 import VisualizerActions from './visualizer_actions';
-import Graph from './graph';
 import LineGraph from './line_graph';
 
 class Visualizer extends React.Component {
@@ -31,7 +30,6 @@ class Visualizer extends React.Component {
   render() {
     return (
       <div className='visualizer'>
-        <Graph data={ this.state.data }/>
         <LineGraph line={ GRAPH_CONFIG.line }
                    xscale={ GRAPH_CONFIG.xscale }
                    yscale={ GRAPH_CONFIG.yscale }
